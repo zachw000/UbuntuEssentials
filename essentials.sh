@@ -10,7 +10,7 @@ while true; do
 	read -p "Do you want to install Java (tm)?" yn
 	case $yn in
 		[Yy]* ) sudo add-apt-repository ppa:webupd8team/java; sudo apt-get update; sudo apt-get install oracle-java8-installer; break;;
-		[Nn]* ) exit;;
+		[Nn]* ) break;;
 		* ) echo "Please answer yes or no.";;
 	esac
 done
