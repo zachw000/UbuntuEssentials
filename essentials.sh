@@ -23,6 +23,16 @@ while true; do
 		* ) echo "Please answer yes or no.";
 	esac
 done
+
+# Install Lua
+while true; do
+	read -p "Do you want to install Lua (r)?" yn
+	case $yn in
+		[Yy]* ) wget http://www.lua.org/ftp/lua-5.3.1.tar.gz; tar -zxf lua-5.3.1.tar.gz; rm lua-5.3.1.tar.gz; break;;
+		[Nn]* ) break;;
+		* ) echo "Please answer yes or no.";
+	esac
+done
 wget http://download.skype.com/linux/skype-ubuntu-precise_4.3.0.37-1_i386.deb
 if [ ! -f ./skype-ubuntu-precise_4.3.0.37-1_i386.deb ]; then
 	clear
