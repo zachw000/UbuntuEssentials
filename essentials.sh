@@ -45,11 +45,17 @@ if [ -f ./skype-ubuntu-precise_4.3.0.37-1_i386.deb ]; then
 fi
 
 # Install additional packages for compiz
-sudo apt-get install compiz-plugins
-sudo apt-get install compiz-plugins-extra
-sudo apt-get install compizconfig-settings-manager
+while true; do
+	read -p "Do you want to install extra compiz packages?" yn
+	case $yn in
+		[Yy]* ) sudo apt-get install compiz-plugins; sudo apt-get install compiz-plugins-extra;	sudo apt-get install compizconfig-settings-manager; echo "Finished installing settings manager and plugins for Compiz WM."; break;;
+		[Nn]* ) echo "Skipping"; break;;
+		* ) echo "Please answer yes or no."
+	esac
+done
 clear
-echo "Installed Compiz Plugins and Settings Manager for Compiz WM"
+
+# Start google chrome installer
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 if [ ! -f ./google-chrome-stable_current_amd64.deb ]; then
 	clear
@@ -69,11 +75,9 @@ clear
 
 echo Finished Installing Essential Programs!
 
-echo "Please Configure Compiz to your desire."
-ccsm
-
 # Update Databases
 sudo apt-get update
+
 # Clear the screen
 clear
-echo Done!
+echo "Done! All essential programs has been installed."
